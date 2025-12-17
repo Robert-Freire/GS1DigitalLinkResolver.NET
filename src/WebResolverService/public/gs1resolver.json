@@ -1,0 +1,16 @@
+{
+  "resolverRoot": "https://example.com",
+  "supportedPrimaryKeys": [
+    "01",
+    "gtin",
+    "414",
+    "gln",
+    "8003",
+    "grai",
+    "8004",
+    "giai"
+  ],
+  "active": true,
+  "description": "GS1 Digital Link Resolver",
+  "version": "1.0.0"
+}

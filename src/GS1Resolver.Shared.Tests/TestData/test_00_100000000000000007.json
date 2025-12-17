@@ -1,0 +1,57 @@
+{
+  "anchor": "/00/100000000000000007",
+  "itemDescription": "Dal Giardino Pallet Shipment - Qualified SSCC with Lot Number",
+  "defaultLinktype": "gs1:pip",
+  "qualifiers": [
+    {
+      "10": "{lotnumber}"
+    }
+  ],
+  "links": [
+    {
+      "linktype": "gs1:pip",
+      "href": "https://dalgiardino.com/logistics/sscc/100000000000000007?lot={lotnumber}",
+      "title": "Shipment Information for Lot",
+      "type": "text/html",
+      "hreflang": [
+        "en"
+      ]
+    },
+    {
+      "linktype": "gs1:pip",
+      "href": "https://dalgiardino.com/logistics/sscc/100000000000000007/es?lot={lotnumber}",
+      "title": "Información del Envío para Lote",
+      "type": "text/html",
+      "hreflang": [
+        "es"
+      ]
+    },
+    {
+      "linktype": "gs1:traceability",
+      "href": "https://dalgiardino.com/logistics/trace/100000000000000007?lot={lotnumber}",
+      "title": "Traceability Information for Lot",
+      "type": "text/html",
+      "hreflang": [
+        "en"
+      ]
+    },
+    {
+      "linktype": "gs1:traceability",
+      "href": "https://dalgiardino.com/logistics/trace/100000000000000007/es?lot={lotnumber}",
+      "title": "Información de Trazabilidad para Lote",
+      "type": "text/html",
+      "hreflang": [
+        "es"
+      ]
+    },
+    {
+      "linktype": "gs1:epedigree",
+      "href": "https://dalgiardino.com/logistics/pedigree/100000000000000007?lot={lotnumber}",
+      "title": "E-Pedigree Documentation for Lot",
+      "type": "application/pdf",
+      "hreflang": [
+        "en"
+      ]
+    }
+  ]
+}
