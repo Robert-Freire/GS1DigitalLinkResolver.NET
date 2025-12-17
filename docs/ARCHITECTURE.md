@@ -56,11 +56,15 @@ The official GS1 Node.js toolkit is executed as a real subprocess.
 ### 3. TestHarnessService (Port 5000)
 
 **Purpose**
-- UI for the official GS1 test suite
+- GS1 compliance test UI
 
 **Responsibilities**
-- Execute GS1 compliance scenarios
+- Execute official GS1 test scenarios
 - Validate resolver behavior end-to-end
+
+**Note**
+- Development & validation only
+- Not required in production deployments
 
 ---
 
@@ -90,7 +94,7 @@ The official GS1 Node.js toolkit is executed as a real subprocess.
 
 ## 🔁 Content Negotiation
 
-Negotiation hierarchy exactly matches the GS1 CE:
+Negotiation hierarchy exactly matches the GS1 CE reference implementation:
 
 1. Language (`Accept-Language`, q-values)
 2. Context & media
@@ -99,16 +103,41 @@ Negotiation hierarchy exactly matches the GS1 CE:
 
 ---
 
-## 🔄 End-to-End Flow (Example)
+## 🔄 End-to-End Flow (Textual)
 
-1. Client submits GS1 JSON via DataEntryService
-2. Cosmos DB upsert (merge qualifiers)
-3. Client resolves:
-   `/01/{gtin}/10/{lot}?linktype=gs1:pip`
-4. Toolkit expands path
-5. Resolver loads document
-6. Negotiation selects best link
-7. `307 Location` returned
+1. GS1 linksets are preloaded via the DataEntryService
+2. Documents are upserted into Cosmos DB
+3. Client resolves a Digital Link URL
+4. Resolver expands identifiers using the GS1 toolkit
+5. Linkset is loaded from Cosmos DB
+6. Content negotiation selects the best match
+7. Resolver returns a clean `307 Location` redirect
+
+---
+
+## 🔁 End-to-End Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant DE as DataEntryService
+    participant WR as WebResolverService
+    participant CN as ContentNegotiationService
+    participant Toolkit as GS1 Node Toolkit
+    participant Cosmos as Cosmos DB
+
+    Note over Client,DE: 3x POST test_01_*.json → data[3]
+
+    Client->>DE: POST /api/new/single\n{ anchor:/01/gtin,\n  qualifiers:[],\n  links... }
+    DE->>Cosmos: Upsert\n(append if qualifier differs)
+
+    Client->>WR: GET /01/gtin/10/LOT01?linktype=gs1:pip
+    WR->>Toolkit: Uncompress\n→ id + qualifiers
+    WR->>Cosmos: ReadById
+    WR->>CN: Match lang / linktype
+    CN-->>WR: Selected link\n(pil.html?lot=LOT01)
+    WR-->>Client: 307 Location (clean)
+```
 
 ---
 
@@ -123,7 +152,7 @@ Negotiation hierarchy exactly matches the GS1 CE:
 
 ## ☁️ Deployment
 
-Recommended setup:
+Recommended production setup:
 
 - Azure Cosmos DB
 - AKS or Azure App Service
@@ -135,4 +164,4 @@ Recommended setup:
 
 - GS1 Digital Link Resolver CE (archived Python reference)
 - Linkset v3 JSON format
-- Fully compatible with GS1 test harness
+- Fully compatible with the GS1 test harness
