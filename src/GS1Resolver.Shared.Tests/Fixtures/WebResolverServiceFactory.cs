@@ -79,11 +79,14 @@ public class WebResolverServiceFactory : WebApplicationFactory<WebResolverServic
                         {
                             var httpMessageHandler = new HttpClientHandler
                             {
-                                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+                                ClientCertificateOptions = ClientCertificateOption.Manual,
+                                SslProtocols = System.Security.Authentication.SslProtocols.Tls12 | System.Security.Authentication.SslProtocols.Tls13
                             };
                             return new HttpClient(httpMessageHandler);
                         },
-                        ConnectionMode = ConnectionMode.Gateway
+                        ConnectionMode = ConnectionMode.Gateway,
+                        RequestTimeout = TimeSpan.FromSeconds(30)
                     };
 
                     return new CosmosClient(cosmosSettings.ConnectionString, clientOptions);

@@ -40,14 +40,14 @@ if (!Directory.Exists(staticFilesPath))
     app.Logger.LogWarning("wwwroot directory did not exist, created: {Path}", staticFilesPath);
 }
 
-app.UseStaticFiles(new StaticFileOptions
+// IMPORTANT: UseDefaultFiles must come BEFORE UseStaticFiles
+app.UseDefaultFiles(new DefaultFilesOptions
 {
     FileProvider = new PhysicalFileProvider(staticFilesPath),
     RequestPath = ""
 });
 
-// Enable default files (index.html)
-app.UseDefaultFiles(new DefaultFilesOptions
+app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(staticFilesPath),
     RequestPath = ""
@@ -55,9 +55,6 @@ app.UseDefaultFiles(new DefaultFilesOptions
 
 app.UseRouting();
 app.MapControllers();
-
-// Fallback to index.html for SPA-like behavior
-app.MapFallbackToFile("index.html");
 
 app.Logger.LogInformation("Test Harness Service starting on port 5000");
 app.Logger.LogInformation("Serving static files from: {Path}", staticFilesPath);

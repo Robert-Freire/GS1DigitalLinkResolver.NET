@@ -56,7 +56,24 @@ builder.Services.AddSingleton<CosmosClient>(sp =>
     {
         throw new InvalidOperationException("Cosmos DB connection string is not configured");
     }
-    return new CosmosClient(cosmosSettings.ConnectionString);
+
+    var clientOptions = new CosmosClientOptions
+    {
+        ConnectionMode = ConnectionMode.Gateway,
+        RequestTimeout = TimeSpan.FromSeconds(30),
+        HttpClientFactory = () =>
+        {
+            var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true,
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                SslProtocols = System.Security.Authentication.SslProtocols.Tls12 | System.Security.Authentication.SslProtocols.Tls13
+            };
+            return new HttpClient(handler);
+        }
+    };
+
+    return new CosmosClient(cosmosSettings.ConnectionString, clientOptions);
 });
 
 // Register repository and services

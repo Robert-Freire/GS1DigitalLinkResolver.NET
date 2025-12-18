@@ -13,19 +13,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResolverService", "src\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHarnessService", "src\TestHarnessService\TestHarnessService.csproj", "{AEDF3692-92C0-4E4C-8CB0-396C9E438E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS1Resolver.Shared.Tests", "tests\GS1Resolver.Shared.Tests\GS1Resolver.Shared.Tests.csproj", "{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{847B7F91-3F24-4807-AF3A-55DF1D0B2A87}"
 	ProjectSection(SolutionItems) = preProject
-		docs\docs_ARCHITECTURE.md = docs\docs_ARCHITECTURE.md
+		docs\ARCHITECTURE.md = docs\ARCHITECTURE.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS1Resolver.Shared.Tests", "src\GS1Resolver.Shared.Tests\GS1Resolver.Shared.Tests.csproj", "{FED46B48-15DE-22C4-9E50-17EDC8DB099D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,18 +86,18 @@ Global
 		{AEDF3692-92C0-4E4C-8CB0-396C9E438E07}.Release|x64.Build.0 = Release|Any CPU
 		{AEDF3692-92C0-4E4C-8CB0-396C9E438E07}.Release|x86.ActiveCfg = Release|Any CPU
 		{AEDF3692-92C0-4E4C-8CB0-396C9E438E07}.Release|x86.Build.0 = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|x64.Build.0 = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Debug|x86.Build.0 = Debug|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|x64.ActiveCfg = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|x64.Build.0 = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|x86.ActiveCfg = Release|Any CPU
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF}.Release|x86.Build.0 = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|x64.Build.0 = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Debug|x86.Build.0 = Debug|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|x64.ActiveCfg = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|x64.Build.0 = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|x86.ActiveCfg = Release|Any CPU
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,7 +107,7 @@ Global
 		{C728F702-A859-46C1-B9A2-DC92E974EF08} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{9984CF43-EE10-4EAC-B8C8-AF6216FD3CD8} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{AEDF3692-92C0-4E4C-8CB0-396C9E438E07} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{BC27C252-01C4-8F24-8F2D-77A0D967A4BF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{FED46B48-15DE-22C4-9E50-17EDC8DB099D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD4D1FDB-E584-4A1A-B998-CBF9A12944BE}
