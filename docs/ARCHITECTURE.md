@@ -143,7 +143,6 @@ sequenceDiagram
 
 ## ⚡ Performance Notes
 
-- Performance characteristics are **theoretical**
 - Stateless services allow horizontal scaling
 - Expected low-latency resolution with proper indexing
 - Cosmos DB RU provisioning determines throughput
