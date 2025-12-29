@@ -6,7 +6,7 @@ namespace GS1Resolver.Shared.Tests.Mocks;
 
 /// <summary>
 /// In-memory implementation of IResolverRepository for testing when Cosmos DB emulator is unavailable.
-/// Stores documents in memory using a concurrent dictionary for thread safety.
+/// Stores documents in memory using a Dictionary guarded by a lock for thread safety.
 /// </summary>
 public class InMemoryResolverRepository : IResolverRepository
 {
